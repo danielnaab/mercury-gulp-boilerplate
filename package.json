@@ -1,0 +1,28 @@
+{
+  "name": "mercury-gulp-boilerplate",
+  "version": "0.0.1",
+  "author": {
+    "name": "Daniel Naab"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "mercury": "^6.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^5.9.1",
+    "es6ify": "^1.2.0",
+    "gulp": "^3.8.7",
+    "gulp-connect": "^2.0.6",
+    "gulp-rimraf": "^0.1.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-size": "^1.0.0",
+    "gulp-useref": "^0.6.0",
+    "gulp-util": "^3.0.0",
+    "mercury-jsxify": "^0.14.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
