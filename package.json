@@ -5,12 +5,13 @@
     "name": "Daniel Naab"
   },
   "dependencies": {
+    "cuid": "^1.2.4",
     "lodash": "^2.4.1",
     "mercury": "^6.0.1"
   },
   "devDependencies": {
     "browserify": "^5.9.1",
-    "es6ify": "^1.2.0",
+    "es6-browserify": "0.0.7",
     "gulp": "^3.8.7",
     "gulp-connect": "^2.0.6",
     "gulp-rimraf": "^0.1.0",

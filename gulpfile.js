@@ -1,12 +1,12 @@
 'use strict';
 
+var _ = require('lodash');
 var browserify = require('browserify');
 var connect = require('gulp-connect');
-var es6ify = require('es6ify');
+var es6Browserify = require('es6-browserify');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jsxify = require('mercury-jsxify');
-var _ = require('lodash');
 var rimraf = require('gulp-rimraf');
 var sass = require('gulp-sass');
 var size = require('gulp-size');
@@ -28,7 +28,8 @@ function scripts(watch) {
     args.debug = DEBUG;
 
     var bundler = browserify('./app/scripts/app.js', args)
-        .add(es6ify.runtime);
+        .transform(jsxify, {es6: true})
+        .transform(es6Browserify);
 
     if (watch) {
         bundler = watchify(bundler);
