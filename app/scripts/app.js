@@ -22,9 +22,9 @@ class App {
         return (
             <div>
                 <h1>Mercury Boilerplate</h1>
-                <section className="editor">{this.itemEditor.render()}</section>
+                <section className="item-editor">{this.itemEditor.render()}</section>
                 <section className="undo-manager">{this.undoManager.render()}</section>
-                <section className="viewer">{this.itemViewer.render(state.item)}</section>
+                <section className="item-viewer">{this.itemViewer.render(state.item)}</section>
             </div>
         )
     }

@@ -7,20 +7,17 @@ body {
 section {
     padding: 10px;
     text-align: top;
-    &.editor {
+    &.item-editor {
         float: left;
+        width: 300px;
+        @import "components/item-editor";
     }
     &.undo-manager {
         float: right;
+        width: 300px;
+        @import "components/undo-manager";
     }
-}
-
-.item-editor {
-    @import "components/item-editor";
-}
-.undo-manager {
-    @import "components/undo-manager";
-}
-.item-viewer {
-    @import "components/item-viewer";
+    &.item-viewer {
+        @import "components/item-viewer";
+    }
 }
