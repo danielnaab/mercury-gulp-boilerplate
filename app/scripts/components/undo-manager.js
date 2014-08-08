@@ -17,7 +17,9 @@ class UndoManager {
                 this.jumpingState = false
             }
             else {
-                this.states = this.states.slice(0, this.stateIndex + 1)
+                if (this.stateIndex < this.states.length - 1) {
+                    this.states = this.states.slice(0, this.stateIndex + 1)
+                }
                 this.states.push(newState)
                 this.stateIndex = this.states.length - 1
             }
