@@ -1,5 +1,4 @@
 /** @jsx h */
-/* jshint camelcase: false */
 'use strict';
 
 var m = require('mercury')
