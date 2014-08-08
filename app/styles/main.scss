@@ -3,3 +3,24 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
+
+section {
+    padding: 10px;
+    text-align: top;
+    &.editor {
+        float: left;
+    }
+    &.undo-manager {
+        float: right;
+    }
+}
+
+.item-editor {
+    @import "components/item-editor";
+}
+.undo-manager {
+    @import "components/undo-manager";
+}
+.item-viewer {
+    @import "components/item-viewer";
+}

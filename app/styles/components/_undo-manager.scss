@@ -1,0 +1,9 @@
+a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+li {
+    &.active {
+        background-color: lightgreen;
+    }
+}
