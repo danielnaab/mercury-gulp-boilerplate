@@ -2,10 +2,12 @@
 
 var _ = require('lodash')
 var browserify = require('browserify')
+var cache = require('gulp-cache')
 var connect = require('gulp-connect')
 var es6Browserify = require('es6-browserify')
 var gulp = require('gulp')
 var gutil = require('gulp-util')
+var imagemin = require('gulp-imagemin')
 var jsxify = require('mercury-jsxify')
 var rimraf = require('gulp-rimraf')
 var sass = require('gulp-sass')
@@ -79,6 +81,19 @@ gulp.task('html', function () {
 })
 
 
+gulp.task('images', function () {
+    return gulp.src('app/images/**/*')
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true
+        })))
+        .pipe(gulp.dest('dist/images'))
+        .pipe(size())
+        .pipe(connect.reload());
+});
+
+
 gulp.task('scripts', function() {
     return scripts(false)
 })
@@ -95,6 +110,7 @@ gulp.task('styles', function () {
 
 gulp.task('watch', ['html', 'connect'], function() {
     gulp.watch('app/styles/**/*.scss', ['styles'])
+    gulp.watch('app/image/**/', ['images'])
 
     return scripts(true)
 })
