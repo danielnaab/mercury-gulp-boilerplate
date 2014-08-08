@@ -1,20 +1,22 @@
 'use strict';
 
-var _ = require('lodash')
-var browserify = require('browserify')
-var cache = require('gulp-cache')
-var connect = require('gulp-connect')
-var es6Browserify = require('es6-browserify')
-var gulp = require('gulp')
-var gutil = require('gulp-util')
-var imagemin = require('gulp-imagemin')
-var jsxify = require('mercury-jsxify')
-var rimraf = require('gulp-rimraf')
-var sass = require('gulp-sass')
-var size = require('gulp-size')
-var source = require('vinyl-source-stream')
-var useref = require('gulp-useref')
-var watchify = require('watchify')
+var _ = require('lodash'),
+    browserify = require('browserify'),
+    cache = require('gulp-cache'),
+    connect = require('gulp-connect'),
+    es6Browserify = require('es6-browserify'),
+    gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    imagemin = require('gulp-imagemin'),
+    jsxify = require('mercury-jsxify'),
+    minifycss = require('gulp-minify-css'),
+    rename = require('gulp-rename'),
+    rimraf = require('gulp-rimraf'),
+    sass = require('gulp-sass'),
+    size = require('gulp-size'),
+    source = require('vinyl-source-stream'),
+    useref = require('gulp-useref'),
+    watchify = require('watchify')
 
 var DEBUG = true
 
@@ -103,12 +105,15 @@ gulp.task('styles', function () {
     return gulp.src('./app/styles/main.scss')
         .pipe(sass())
         .pipe(gulp.dest('./dist/styles'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifycss())
+        .pipe(gulp.dest('./dist/styles'))
         .pipe(size())
         .pipe(connect.reload())
 })
 
 
-gulp.task('watch', ['html', 'connect'], function() {
+gulp.task('watch', ['html', 'styles', 'connect'], function() {
     gulp.watch('app/styles/**/*.scss', ['styles'])
     gulp.watch('app/image/**/', ['images'])
 
