@@ -3,28 +3,25 @@
 
 var m = require('mercury')
 var h = m.h
-var ItemEditor = require('./components/item-editor.js')
-var ItemViewer = require('./components/item-viewer.js')
+var Item = require('./components/item.js')
 var UndoManager = require('./components/undo-manager.js')
 
 
 class App {
     constructor() {
-        this.itemEditor = new ItemEditor()
-        this.itemViewer = new ItemViewer()
         this.state = m.struct({
-            item: this.itemEditor.item
+            item: new Item().state
         })
-        this.undoManager = new UndoManager(this.state)
+        this.undoManager = new UndoManager(this.state.item)
     }
 
     render(state) {
         return (
             <div>
                 <h1>Mercury Boilerplate</h1>
-                <section className="item-editor">{this.itemEditor.render()}</section>
+                <section className="item-editor">{Item.renderEditor(state.item)}</section>
                 <section className="undo-manager">{this.undoManager.render()}</section>
-                <section className="item-viewer">{this.itemViewer.render(state.item)}</section>
+                <section className="item-viewer">{Item.renderViewer(state.item)}</section>
             </div>
         )
     }

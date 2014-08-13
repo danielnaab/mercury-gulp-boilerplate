@@ -31,6 +31,7 @@ class UndoManager {
         if (0 <= index && index <= this.states.length - 1) {
             this.stateIndex = index
             this.jumpingState = true
+            console.log(this.stateIndex, this.states.length)
             this.state.set(this.states[this.stateIndex])
         }
     }
@@ -44,7 +45,7 @@ class UndoManager {
                 <ul>
                     {this.states.map((state, index) =>
                         <li className={index === this.stateIndex ? 'active' : 'inactive'}>
-                            <a ev-click={m.event(this.events.jump, index)}>{state.item}</a>
+                            <a ev-click={m.event(this.events.jump, index)}>{state.content}</a>
                         </li>
                     )}
                 </ul>
