@@ -3,16 +3,17 @@
 
 var m = require('mercury')
 var h = m.h
-var Item = require('./components/item.js')
-var UndoManager = require('./components/undo-manager.js')
+var Item = require('./components/item')
+var UndoManager = require('./components/undo-manager')
 
 
 class App {
     constructor() {
+        var item = new Item()
+        this.undoManager = new UndoManager(item.state)
         this.state = m.struct({
-            item: new Item().state
+            item: item.state
         })
-        this.undoManager = new UndoManager(this.state.item)
     }
 
     render(state) {

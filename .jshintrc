@@ -20,6 +20,7 @@
   "browser": true,
   "newcap": false,
   "quotmark": "true",
+  "latedef": false,
 
   "asi": true
 }
